@@ -1,0 +1,18 @@
+---
+version: "2"
+
+services:
+  pynps_nopaystation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pynps-nopaystation
+    network_mode: bridge
+    environment:
+      - PUID= #optional
+      - PGID= #optional
+    volumes:
+      - /path/to/pyNPS/config/:/home/appuser/.config/pyNPS
+      - /path/to/Downloads/:/home/appuser/Downloads
+    #restart: unless-stopped
+    mem_limit: 512M
